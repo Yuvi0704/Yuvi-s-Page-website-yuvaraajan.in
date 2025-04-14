@@ -6,42 +6,86 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Yuvi's Site</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="Yuvaraajan's Portfolio" name="description">
+  <meta content="Networking, Cybersecurity, Web Development" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/tab.png" rel="icon">
-  <link href="assets/img/tab.png" rel="tab.png">
+  <link href="assets/img/tab.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Vendor CSS CDN -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@9.0.0/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  
+  <style>
+    /* Custom Hero Section */
+    #hero {
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      min-height: 100vh;
+    }
+    
+    /* About Image Styling */
+    .about .img-fluid {
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .about .img-fluid:hover {
+      transform: scale(1.03);
+    }
+
+    /* Resume Buttons Styling */
+    .resume-btns .btn {
+      margin: 10px;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    .resume-btns .btn-primary {
+      background: #3498db;
+      border: 2px solid #3498db;
+    }
+    .resume-btns .btn-outline-primary {
+      border: 2px solid #3498db;
+      color: #3498db;
+    }
+    .resume-btns .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Fix for mobile navigation */
+    .mobile-nav-toggle {
+      position: fixed;
+      right: 15px;
+      top: 15px;
+      z-index: 9998;
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- ======= Mobile nav toggle button ======= -->
+  <!-- Mobile nav toggle button -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
-  <!-- ======= Header ======= -->
+  <!-- Header -->
   <header id="header">
     <div class="d-flex flex-column">
-
       <div class="profile">
-        <img src="assets/img/tpic.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Yuvaraajan </a></h1>
+        <img src="assets/img/tpic.jpg" alt="Profile" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html">Yuvaraajan</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="https://twitter.com/EYuvaraajan" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="https://www.instagram.com/y__u___v__i" class="instagram"><i class="bx bxl-instagram"></i></a>
@@ -56,43 +100,40 @@
           <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li><a href="#facts" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Achievements</span></a></li>
           <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="#testimonials" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Testimonials</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact </span></a></li>
+          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
         </ul>
-      </nav><!-- .nav-menu -->
+      </nav>
     </div>
-  </header><!-- End Header -->
+  </header>
 
-  <!-- ======= Hero Section ======= -->
+  <!-- Hero Section -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="hero-container" data-aos="fade-in">
       <h1>Yuvaraajan</h1>
-      <p>I'm a <span class="typed" data-typed-items="Student, Networking Enthusiast,Cyber Security Practitioner"></span></p>
+      <p>I'm a <span class="typed" data-typed-items="Student, Networking Enthusiast, Cyber Security Practitioner"></span></p>
     </div>
-  </section><!-- End Hero -->
+  </section>
 
   <main id="main">
-
-    <!-- ======= About Section ======= -->
+    <!-- About Section -->
     <section id="about" class="about">
-      
+      <div class="container">
         <div class="row">
           <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/1.jpg" class="img-fluid" alt="">
+            <img src="assets/img/1.jpg" class="img-fluid" alt="Profile">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Network Administrator.</h3>
+            <h3>Network Administrator</h3>
             <p class="fst-italic">
-              "Dedicated to mastering network administration, I delve into the dynamic realm of computer networking, striving for 
-              excellence in the latest technologies and security measures to contribute meaningfully and make a lasting impact."
+              "Dedicated to mastering network administration, I delve into the dynamic realm of computer networking..."
             </p>
             <div class="row">
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>7 Nov 2002</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.yuvaraajan.in</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+91 6380390821</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Puducherry, IN</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+1 (825) 333-0704</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Edmonton, Canada</span></li>
                 </ul>
               </div>
               <div class="col-lg-6">
@@ -104,25 +145,20 @@
               </div>
             </div>
             <p>
-                Hi, I'm Yuvaraj, a final year B.Tech student majoring in Computer Science and Engineering. My academic journey is fueled by a passion for Computer Networking, leading me to develop a strong foundation in programming, algorithms, and system design. I believe in the impactful role of networking to create seamless experiences, enhance communication, and foster innovation. As I near the end of my undergraduate studies, I'm excited to apply my skills in the dynamic field of Computer Networking. Beyond my studies, I stay updated on the latest tech advancements, work on networking projects, and enjoy exploring new challenges with fellow tech enthusiasts.
+              Hi, I'm Yuvaraj, a final year B.Tech student majoring in Computer Science and Engineering. My academic journey is fueled by a passion for Computer Networking, leading me to develop a strong foundation in programming, algorithms, and system design. I believe in the impactful role of networking to create seamless experiences, enhance communication, and foster innovation. As I near the end of my undergraduate studies, I'm excited to apply my skills in the dynamic field of Computer Networking. Beyond my studies, I stay updated on the latest tech advancements, work on networking projects, and enjoy exploring new challenges with fellow tech enthusiasts.
             </p>
           </div>
         </div>
-
       </div>
-    </section><!-- End About Section -->
+    </section>
 
-   <!-- ======= Achievements Section ======= -->
-<section id="facts" class="facts">
-  <div class="container">
-
-      <div class="section-title">
+    <!-- ======= Achievements Section ======= -->
+    <section id="facts" class="facts">
+      <div class="container">
+        <div class="section-title">
           <h2>Achievements</h2>
-      </div>
-
-      <div class="row no-gutters">
-
-          <!-- Subsection: Projects -->
+        </div>
+        <div class="row no-gutters">
           <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
               <div class="count-box">
                   <i class="bi bi-tools"></i>
@@ -131,8 +167,6 @@
                   <p><strong>Projects</strong> </p>
               </div>
           </div>
-
-          <!-- Subsection: Publications -->
           <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
               <div class="count-box">
                   <i class="bi bi-file-text"></i>
@@ -141,8 +175,6 @@
                   <p><strong>Publications</strong></p>
               </div>
           </div>
-
-          <!-- Subsection: Awards -->
           <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
               <div class="count-box">
                   <i class="bi bi-award"></i>
@@ -151,39 +183,30 @@
                   <p><strong>Awards</strong></p>
               </div>
           </div>
-
+        </div>
       </div>
-
-  </div>
-</section><!-- End Achievements Section -->
-
+    </section><!-- End Achievements Section -->
 
     <!-- ======= Skills Section ======= -->
     <section id="skills" class="skills section-bg">
       <div class="container">
-
         <div class="section-title">
           <h2>Skills</h2>
         </div>
-
         <div class="row skills-content">
-
           <div class="col-lg-6" data-aos="fade-up">
-
             <div class="progress">
               <span class="skill">Cisco Packet Tracer<i class="val">90%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div>
-
             <div class="progress">
               <span class="skill">Kali Linux <i class="val">90%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div>
-
             <div class="progress">
               <span class="skill">AWS <i class="val">60%</i></span>
               <div class="progress-bar-wrap">
@@ -196,11 +219,8 @@
                 <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div>
-
           </div>
-
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-
             <div class="progress">
               <span class="skill">Python <i class="val">80%</i></span>
               <div class="progress-bar-wrap">
@@ -213,119 +233,73 @@
                 <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div>
-
             <div class="progress">
               <span class="skill">CSS <i class="val">80%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div>
-
             <div class="progress">
               <span class="skill">JavaScript <i class="val">70%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-            </div>
-                        
+            </div>                        
           </div>
-
         </div>
-
       </div>
     </section><!-- End Skills Section -->
 
+    <!-- ======= Resume Section ======= -->
     <section id="resume" class="resume">
       <div class="container">
-  
-          <div class="section-title">
-              <h2>Resume</h2>
-          </div>
-  
-          <div class="row">
-              
-                  <div class="resume-item">
-                      <h4>Download Resume Here <i class="bi bi-arrow-down"></i></h4>
-                      <a href="assets/Resume/Yuvaraajan-Resume.pdf" download class="btn btn-primary btn-lg">
-                          <i class="bi bi-file-arrow-down"></i> <!-- Adjust the class based on your preferred download icon -->
-                      </a>
-                  </div>
-                                     
-                </div>
-              </div>
-  
-              <!-- Rest of the content in the right column -->
-          </div>
-  
-      </div>
-  </section><!-- End Resume Section -->
-  
-  
-
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
-      <div class="container">
-
         <div class="section-title">
-          <h2>Testimonials</h2>
+          <h2>Resume</h2>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center resume-btns">
+            <a href="https://github.com/Yuvi0704/Yuvi-s-Page-website-yuvaraajan.in/raw/main/assets/Resume/Yuvaraajan-Resume.pdf" 
+               class="btn btn-primary" 
+               target="_blank">
+              <i class="bi bi-eye-fill"></i> View Resume
+            </a>
+            <a href="assets/Resume/Yuvaraajan-Resume.pdf" 
+               class="btn btn-outline-primary" 
+               download="Yuvaraajan-Resume.pdf">
+              <i class="bi bi-download"></i> Download PDF
+            </a>
           </div>
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Lots of Testimonials yet to come !!<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/tpic.jpg" class="testimonial-img" alt="">
-                <h3>Yuvaraj</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div><!-- End testimonial item -->
-          </div>
-          <div class="swiper-pagination"></div>
         </div>
       </div>
-    </section><!-- End Testimonials Section -->
+    </section><!-- End Resume Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container">
-
         <div class="section-title">
           <h2>Contact</h2>
           <p>Feel free to reach me out !</p>
         </div>
-
         <div class="row" data-aos="fade-in">
-
           <div class="col-lg-5 d-flex align-items-stretch">
             <div class="info">
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>Puducherry, India, IN</p>
+                <p>Edmonton, Alberta, Canada</p>
               </div>
-
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
                 <p>info@yuvaraajan.in</p>
               </div>
-
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Call:</h4>
-                <p>+91 6380390821</p>
+                <p>+1 (825) 333-0704</p>
               </div>
-
             </div>
-
           </div>
-
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
@@ -354,31 +328,46 @@
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
           </div>
-
         </div>
-
       </div>
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
+  <!-- Back to Top -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- Vendor JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9.0.0/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/purecounter.js/1.9.0/purecounter_vanilla.min.js"></script>
 
-  <!-- Template Main JS File -->
+  <!-- Template Main JS -->
   <script src="assets/js/main.js"></script>
 
-</body>
+  <!-- Initialize Components -->
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
 
+    // Initialize GLightbox
+    const lightbox = GLightbox({
+      selector: '.glightbox'
+    });
+
+    // Initialize PureCounter
+    new PureCounter();
+  </script>
+
+</body>
 </html>
