@@ -1,373 +1,920 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Yuvi's Site</title>
-  <meta content="Yuvaraajan's Portfolio" name="description">
-  <meta content="Networking, Cybersecurity, Web Development" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/tab.png" rel="icon">
-  <link href="assets/img/tab.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS CDN -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/swiper@9.0.0/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <title>Yuvaraajan.in – Networks · Systems · Sales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Yuvi – Internetworking grad student, CCNP (ENCOR & ENSARI) in progress, building networks, systems and digital solutions with a small enthusiastic team."
+  />
   <style>
-    /* Custom Hero Section */
-    #hero {
-      background: linear-gradient(135deg, #2c3e50, #3498db);
+    :root {
+      --bg: #020617;
+      --panel: #020818;
+      --panel-soft: #020b1f;
+      --accent-main: #22c55e;  /* lime */
+      --accent-alt: #38bdf8;   /* cyan */
+      --accent-soft: rgba(34, 197, 94, 0.45);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1e293b;
+      --font-mono: "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas,
+        "Courier New", monospace;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      --max-inner: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
       min-height: 100vh;
-    }
-    
-    /* About Image Styling */
-    .about .img-fluid {
-      border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
-    }
-    .about .img-fluid:hover {
-      transform: scale(1.03);
+      color: var(--text);
+      font-family: var(--font-mono);
+      background:
+        radial-gradient(circle at top, #0b1120 0, #020617 55%),
+        radial-gradient(circle at bottom, #022c22 0, #020617 60%);
+      position: relative;
+      overflow-x: hidden;
+      font-size: 16px;
     }
 
-    /* Resume Buttons Styling */
-    .resume-btns .btn {
-      margin: 10px;
-      padding: 15px 30px;
-      border-radius: 30px;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-    }
-    .resume-btns .btn-primary {
-      background: #3498db;
-      border: 2px solid #3498db;
-    }
-    .resume-btns .btn-outline-primary {
-      border: 2px solid #3498db;
-      color: #3498db;
-    }
-    .resume-btns .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    /* Fix for mobile navigation */
-    .mobile-nav-toggle {
+    body::before {
+      content: "";
       position: fixed;
-      right: 15px;
-      top: 15px;
-      z-index: 9998;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(148,163,184,0.12) 1px, transparent 0);
+      background-size: 32px 32px;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    a {
+      color: var(--accent-alt);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== HEADER ===== */
+
+    header {
+      position: relative;
+      z-index: 10;
+    }
+
+    .header-bar {
+      width: 100%;
+      border-bottom: 1px solid #020617;
+      background:
+        linear-gradient(135deg, rgba(15,118,110,0.3), rgba(8,47,73,0.9)),
+        #020617;
+      padding: 26px 4vw 20px;
+      box-shadow:
+        0 0 40px rgba(15,23,42,0.95);
+    }
+
+    .header-inner {
+      max-width: var(--max-inner);
+      margin: 0 auto;
+      border-radius: 24px;
+      padding: 18px 22px 18px;
+      border: 3px solid var(--accent-soft);
+      background:
+        radial-gradient(circle at top left, rgba(34,197,94,0.16), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(56,189,248,0.14), transparent 55%),
+        #020617;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow:
+        0 0 0 1px rgba(15,23,42,0.9),
+        0 0 40px rgba(15,23,42,0.9);
+    }
+
+    .header-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .brand-name {
+      font-size: 2rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    .nav-link {
+      padding: 7px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(2,6,23,0.96);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.16s ease-out;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover {
+      border-color: var(--accent-main);
+      color: #e5fbe9;
+      background: radial-gradient(circle at top, rgba(34,197,94,0.35), #020617);
+      box-shadow:
+        0 0 0 1px rgba(56,189,248,0.6),
+        0 0 26px rgba(34,197,94,0.9);
+    }
+
+    .header-meta {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .header-meta span {
+      white-space: nowrap;
+    }
+
+    .header-meta span:nth-child(1) {
+      color: #bbf7d0;
+    }
+
+    .header-meta span:nth-child(2) {
+      color: #7dd3fc;
+    }
+    footer.footer-with-photo {
+  width: 100%;
+  background: #020617;
+  border-top: 1px solid #020617;
+  padding: 16px 4vw 16px;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.footer-text {
+  font-family: var(--font-mono);
+  letter-spacing: 0.15em;
+  font-size: 1rem;
+  color: #cbd5e1;
+  text-align: center;
+}
+
+.footer-photo {
+  position: absolute;
+  right: 4vw;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid #38bdf8;
+  object-fit: cover;
+  box-shadow: 0 0 12px rgba(56,189,248,0.45);
+  max-width: none;      /* stop it from becoming full width */
+}
+
+.footer-photo:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 18px rgba(34,197,94,0.6);
+}
+
+
+    /* ===== SECTIONS ===== */
+
+    section {
+      width: 100%;
+      position: relative;
+    }
+
+    .section-layer {
+      width: 100%;
+      background:
+        radial-gradient(circle at top left, rgba(34,197,94,0.10), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(56,189,248,0.10), transparent 55%),
+        var(--panel);
+      border-top: 1px solid #020617;
+      border-bottom: 1px solid #020617;
+      padding: 52px 4vw 56px;
+    }
+
+    .section-inner {
+      max-width: var(--max-inner);
+      margin: 0 auto;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at top left, rgba(34,197,94,0.09), transparent 60%),
+        var(--panel-soft);
+      border: 1px solid var(--border);
+      padding: 32px 32px 34px; /* more breathing room */
+      box-shadow: 0 18px 45px rgba(15,23,42,0.8);
+    }
+
+    .section-header {
+      font-size: 0.9rem;
+      text-transform: none;
+      letter-spacing: 0.08em;
+      color: var(--accent-alt);
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .section-header span.meta {
+      color: var(--muted);
+      letter-spacing: normal;
+      text-transform: none;
+      font-size: 0.78rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px) scale(0.98);
+      transition:
+        opacity 0.55s ease-out,
+        transform 0.55s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ===== HERO ===== */
+
+    .hero-inner {
+      min-height: 62vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .hero-title {
+      font-family: var(--font-sans);
+      font-size: clamp(2.3rem, 3vw + 1rem, 2.9rem);
+      font-weight: 650;
+      margin: 0;
+    }
+
+    .hero-body {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 50rem;
+      line-height: 1.8;
+    }
+
+    .hero-body strong {
+      color: #e5fbe9;
+      font-weight: 500;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+      font-size: 0.82rem;
+    }
+
+    .hero-tag {
+      padding: 6px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.75);
+      background: rgba(2,6,23,0.95);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.86rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 9px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-main), var(--accent-alt));
+      color: #020617;
+      font-weight: 700;
+      box-shadow:
+        0 0 0 1px rgba(56,189,248,0.5),
+        0 0 26px rgba(34,197,94,0.8);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.07);
+      box-shadow:
+        0 0 0 1px rgba(56,189,248,0.9),
+        0 0 30px rgba(34,197,94,1);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148,163,184,0.8);
+      color: var(--text);
+      background: rgba(4,7,22,0.96);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent-alt);
+      color: var(--accent-alt);
+    }
+
+    /* ===== SKILLS + PROJECTS (looser) ===== */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+      gap: 32px;                 /* more space between columns */
+      align-items: flex-start;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;                 /* more gap between cards */
+      font-size: 0.9rem;
+    }
+
+    .skill-block {
+      background: #020617;
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,0.5);
+      padding: 16px 18px 18px;   /* more padding */
+    }
+
+    .skill-title {
+      font-size: 1rem;           /* bigger heading */
+      color: #e5e7eb;
+      margin-bottom: 8px;
+    }
+
+    .skill-items {
+      list-style: none;
+      padding-left: 20px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;        /* bigger text */
+      line-height: 1.7;          /* more line spacing */
+    }
+
+    .skill-items li {
+      margin-bottom: 5px;
+    }
+
+    .projects-list {
+      display: grid;
+      grid-template-columns: minmax(0,1fr);
+      gap: 20px;                 /* more space between projects */
+      font-size: 0.9rem;
+    }
+
+    .project-card {
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 60%),
+        #020617;
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,0.65);
+      padding: 16px 18px 18px;   /* more padding */
+    }
+
+    .project-name {
+      font-size: 1rem;           /* bigger title */
+      margin-bottom: 8px;
+      color: #e5e7eb;
+    }
+
+    .project-desc {
+      font-size: 0.95rem;        /* bigger text */
+      color: var(--muted);
+      margin-bottom: 8px;
+      line-height: 1.7;          /* more line spacing */
+    }
+
+    .project-meta {
+      font-size: 0.86rem;
+      color: var(--accent-alt);
+    }
+
+    /* ===== EXPERIENCE ===== */
+
+    .timeline {
+      display: grid;
+      grid-template-columns: minmax(0,1fr);
+      gap: 14px;
+    }
+
+    .timeline-item {
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: #020617;
+      padding: 11px 13px 13px;
+      font-size: 0.9rem;
+    }
+
+    .timeline-role {
+      font-size: 0.95rem;
+      color: #e5e7eb;
+    }
+
+    .timeline-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .timeline-points {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.6;
+    }
+
+    .timeline-points li {
+      margin-bottom: 4px;
+    }
+
+    /* ===== CONTACT ===== */
+
+    .contact-shell {
+      border-radius: 20px;
+      padding: 18px 18px 20px;
+      border: 1px solid rgba(34,197,94,0.7);
+      background:
+        linear-gradient(135deg, rgba(34,197,94,0.16), rgba(56,189,248,0.14)),
+        #020617;
+      box-shadow:
+        0 0 0 1px rgba(15,23,42,0.9),
+        0 0 36px rgba(15,23,42,0.98);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .contact-card {
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,0.9);
+      background: rgba(2,6,23,0.96);
+      padding: 12px 15px 14px;
+      text-align: center;
+      transition:
+        box-shadow 0.22s ease-out,
+        transform 0.22s ease-out,
+        border-color 0.22s ease-out;
+    }
+
+    .contact-icon {
+      font-size: 1.6rem;
+      margin-bottom: 5px;
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .contact-link {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.85);
+      background: #020617;
+      font-size: 0.88rem;
+      color: #e5e7eb;
+      white-space: nowrap;
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.5);
+      transition:
+        box-shadow 0.22s ease-out,
+        transform 0.22s ease-out,
+        border-color 0.22s ease-out,
+        background 0.22s ease-out;
+    }
+
+    .contact-card:hover {
+      border-color: var(--accent-main);
+      transform: translateY(-4px);
+      box-shadow:
+        0 0 0 1px rgba(56,189,248,0.7),
+        0 0 28px rgba(34,197,94,0.9);
+    }
+
+    .contact-card:hover .contact-link {
+      border-color: var(--accent-alt);
+      background: radial-gradient(circle at top, rgba(56,189,248,0.32), #020617);
+      box-shadow:
+        0 0 0 1px rgba(56,189,248,0.6),
+        0 0 22px rgba(34,197,94,0.9);
+    }
+
+    .contact-echo {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      text-align: center;
+      color: #bbf7d0;
+    }
+
+    /* ===== FOOTER ===== */
+
+   
+    /* ===== RESPONSIVE ===== */
+
+    @media (max-width: 900px) {
+      .header-inner {
+        padding: 16px 16px 18px;
+      }
+      .hero-inner {
+        min-height: 0;
+      }
+      .two-col {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-inner {
+        padding: 24px 18px 26px;
+      }
+      nav {
+        width: 100%;
+        overflow-x: auto;
+      }
+      .nav-link {
+        font-size: 0.78rem;
+      }
+      .header-meta span {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .header-bar {
+        padding-inline: 3vw;
+      }
+      .brand-name {
+        font-size: 1.5rem;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-body {
+        font-size: 0.95rem;
+      }
+      .contact-link {
+        white-space: normal;
+      }
     }
   </style>
 </head>
-
 <body>
-
-  <!-- Mobile nav toggle button -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-
-  <!-- Header -->
-  <header id="header">
-    <div class="d-flex flex-column">
-      <div class="profile">
-        <img src="assets/img/tpic.jpg" alt="Profile" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Yuvaraajan</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="https://twitter.com/EYuvaraajan" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="https://www.instagram.com/y__u___v__i" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="https://github.com/Yuvi0704" class="github"><i class="bx bxl-github"></i></a>
-          <a href="https://www.linkedin.com/in/yuvaraajan-e" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+  <!-- HEADER -->
+  <header>
+    <div class="header-bar">
+      <div class="header-inner">
+        <div class="header-top">
+          <div class="brand">
+            <div class="brand-name">YUVARAAJAN</div>
+            <div class="brand-tagline">
+              CORE &amp; EDGE NETWORKS · CCNP (ENCOR &amp; ENSARI) · WEB &amp; AI SOLUTIONS
+            </div>
+          </div>
+          <nav>
+            <a class="nav-link" href="#about">[ABOUT]</a>
+            <a class="nav-link" href="#skills">[SKILLS]</a>
+            <a class="nav-link" href="#projects">[PROJECTS]</a>
+            <a class="nav-link" href="#experience">[EXPERIENCE]</a>
+            <a class="nav-link" href="#contact">[CONTACT]</a>
+          </nav>
+        </div>
+        <div class="header-meta">
+          <span>R1# show users | include yuvi</span>
+          <span>R1# show ip interface brief | include up</span>
         </div>
       </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#facts" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Achievements</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-        </ul>
-      </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Yuvaraajan</h1>
-      <p>I'm a <span class="typed" data-typed-items="Student, Networking Enthusiast, Cyber Security Practitioner"></span></p>
+  <!-- HERO -->
+  <section id="about">
+    <div class="section-layer">
+      <div class="section-inner reveal hero-inner">
+        <div class="section-header">
+          <span>R1# show running-config | section ABOUT</span>
+          <span class="meta">last updated: 2025-11-16</span>
+        </div>
+        <h1 class="hero-title">
+          Designing networks, documents and conversations that actually make sense.
+        </h1>
+        <p class="hero-body">
+          I’m Yuvi – a Master’s student in Internetworking at the University of Alberta with a background
+          in Computer Science. I’m currently working towards CCNP (ENCOR &amp; ENSARI), and I enjoy taking messy
+          problems, diagramming them, and turning them into simple systems that people can run.
+          <br /><br />
+          I don’t build alone: I collaborate with a small crew of like-minded people who love
+          <strong>web design, SEO, digital marketing and AI-powered solutions</strong>.
+          So whether it’s a network lab, a marketing funnel or an automation idea, there’s usually someone
+          on the team who gets excited to ship it.
+        </p>
+        <div class="hero-tags">
+          <span class="hero-tag">Routing · Switching · VLANs</span>
+          <span class="hero-tag">TCP/IP · Wireshark · Linux</span>
+          <span class="hero-tag">CCNP ENCOR &amp; ENSARI – ongoing</span>
+          <span class="hero-tag">Web, SEO &amp; AI with a small team</span>
+        </div>
+        <div class="hero-actions">
+          <!-- TODO: change href to your real resume link -->
+          <a class="btn-primary" href="#" target="_blank" rel="noreferrer">DOWNLOAD RESUME</a>
+          <a class="btn-ghost" href="#projects">VIEW PROJECT LOG</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <main id="main">
-    <!-- About Section -->
-    <section id="about" class="about">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/1.jpg" class="img-fluid" alt="Profile">
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Network Administrator</h3>
-            <p class="fst-italic">
-              "Dedicated to mastering network administration, I delve into the dynamic realm of computer networking..."
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>7 Nov 2002</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.yuvaraajan.in</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+1 (825) 333-0704</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Edmonton, Canada</span></li>
+  <!-- SKILLS + PROJECTS -->
+  <section>
+    <div class="section-layer">
+      <div class="section-inner">
+        <div class="two-col">
+          <!-- SKILLS -->
+          <div class="reveal" id="skills">
+            <div class="section-header">
+              <span>R1# show platform software skill-set</span>
+              <span class="meta">output filtered for yuvi</span>
+            </div>
+            <div class="skills-grid">
+              <div class="skill-block">
+                <div class="skill-title">Routing &amp; Switching</div>
+                <ul class="skill-items">
+                  <li>OSPF, basic EIGRP</li>
+                  <li>VLAN design &amp; inter-VLAN routing</li>
+                  <li>Spanning Tree, port security, ACLs</li>
+                  <li>IPv4/IPv6 addressing &amp; subnetting</li>
                 </ul>
               </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>21</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>yuvi@yuvaraajan.in</span></li>
+              <div class="skill-block">
+                <div class="skill-title">Tools &amp; Platforms</div>
+                <ul class="skill-items">
+                  <li>Cisco Packet Tracer, GNS3 / containerlab (learning)</li>
+                  <li>Wireshark &amp; packet analysis</li>
+                  <li>Linux CLI &amp; Bash</li>
+                  <li>Git &amp; GitHub</li>
+                </ul>
+              </div>
+              <div class="skill-block">
+                <div class="skill-title">Code &amp; Security</div>
+                <ul class="skill-items">
+                  <li>Python for scripts &amp; automation ideas</li>
+                  <li>C from systems / security coursework</li>
+                  <li>Internet security fundamentals</li>
+                  <li>Keylogger behaviour &amp; mitigations (academic)</li>
+                </ul>
+              </div>
+              <div class="skill-block">
+                <div class="skill-title">Web, SEO &amp; AI (Team)</div>
+                <ul class="skill-items">
+                  <li>Landing pages &amp; portfolio sites</li>
+                  <li>SEO basics &amp; content structure</li>
+                  <li>Digital marketing flows &amp; funnels</li>
+                  <li>AI-assisted automation &amp; workflows</li>
                 </ul>
               </div>
             </div>
-            <p>
-              Hi, I'm Yuvaraj, a final year B.Tech student majoring in Computer Science and Engineering. My academic journey is fueled by a passion for Computer Networking, leading me to develop a strong foundation in programming, algorithms, and system design. I believe in the impactful role of networking to create seamless experiences, enhance communication, and foster innovation. As I near the end of my undergraduate studies, I'm excited to apply my skills in the dynamic field of Computer Networking. Beyond my studies, I stay updated on the latest tech advancements, work on networking projects, and enjoy exploring new challenges with fellow tech enthusiasts.
-            </p>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ======= Achievements Section ======= -->
-    <section id="facts" class="facts">
-      <div class="container">
-        <div class="section-title">
-          <h2>Achievements</h2>
-        </div>
-        <div class="row no-gutters">
-          <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
-              <div class="count-box">
-                  <i class="bi bi-tools"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1"
-                      class="purecounter"></span>
-                  <p><strong>Projects</strong> </p>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
-              <div class="count-box">
-                  <i class="bi bi-file-text"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
-                      class="purecounter"></span>
-                  <p><strong>Publications</strong></p>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
-              <div class="count-box">
-                  <i class="bi bi-award"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1"
-                      class="purecounter"></span>
-                  <p><strong>Awards</strong></p>
-              </div>
-          </div>
-        </div>
-      </div>
-    </section><!-- End Achievements Section -->
-
-    <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills section-bg">
-      <div class="container">
-        <div class="section-title">
-          <h2>Skills</h2>
-        </div>
-        <div class="row skills-content">
-          <div class="col-lg-6" data-aos="fade-up">
-            <div class="progress">
-              <span class="skill">Cisco Packet Tracer<i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
+          <!-- PROJECTS -->
+          <div class="reveal" id="projects">
+            <div class="section-header">
+              <span>R1# dir flash:/projects</span>
+              <span class="meta">ls yuvi-projects/</span>
             </div>
-            <div class="progress">
-              <span class="skill">Kali Linux <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">AWS <i class="val">60%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">Azure <i class="val">60%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="progress">
-              <span class="skill">Python <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">HTML <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">CSS <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">JavaScript <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>                        
-          </div>
-        </div>
-      </div>
-    </section><!-- End Skills Section -->
-
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
-      <div class="container">
-        <div class="section-title">
-          <h2>Resume</h2>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-lg-6 text-center resume-btns">
-            <a href="https://github.com/Yuvi0704/Yuvi-s-Page-website-yuvaraajan.in/raw/main/assets/Resume/Yuvaraajan-Resume.pdf" 
-               class="btn btn-primary" 
-               target="_blank">
-              <i class="bi bi-eye-fill"></i> View Resume
-            </a>
-            <a href="assets/Resume/Yuvaraajan-Resume.pdf" 
-               class="btn btn-outline-primary" 
-               download="Yuvaraajan-Resume.pdf">
-              <i class="bi bi-download"></i> Download PDF
-            </a>
-          </div>
-        </div>
-      </div>
-    </section><!-- End Resume Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Feel free to reach me out !</p>
-        </div>
-        <div class="row" data-aos="fade-in">
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>Edmonton, Alberta, Canada</p>
-              </div>
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>info@yuvaraajan.in</p>
-              </div>
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+1 (825) 333-0704</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
+            <div class="projects-list">
+              <article class="project-card">
+                <div class="project-name">ccnp-core-lab/</div>
+                <div class="project-desc">
+                  A five-router lab built for ENCOR study: VLANs, routing, ACLs and
+                  failure scenarios, used as a base for route-attack and mitigation experiments.
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
+                <div class="project-meta">Cisco · OSPF · VLANs · ACLs · documentation-first</div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-name">mint-702-frames-and-errors/</div>
+                <div class="project-desc">
+                  Data communication labs exploring framing, error detection and MAC behaviour,
+                  with written reports that connect the theory to live packet captures.
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="1" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+                <div class="project-meta">Wireshark · TCP/IP · CRC · protocol analysis</div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-name">internet-security-keylogger-study/</div>
+                <div class="project-desc">
+                  A guided investigation into how keyloggers capture input, where they hide,
+                  and practical steps regular users can take to reduce risk.
+                </div>
+                <div class="project-meta">C / Python · OS concepts · security mindset</div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-name">telus-sales-systems/</div>
+                <div class="project-desc">
+                  Playbooks, scorecards and mini-workshops built to help new reps
+                  ramp faster, stay organised and keep their mindset stable in commission environments.
+                </div>
+                <div class="project-meta">Workshops · coaching · process design</div>
+              </article>
+            </div>
           </div>
         </div>
       </div>
-    </section><!-- End Contact Section -->
+    </div>
+  </section>
 
-  </main><!-- End #main -->
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-layer">
+      <div class="section-inner reveal">
+        <div class="section-header">
+          <span>R1# show logging | include yuvi</span>
+          <span class="meta">recent events</span>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-role">Night Auditor – Hospitality (Part-Time)</div>
+            <div class="timeline-meta">Edmonton, Canada · nights &amp; numbers · alongside studies</div>
+            <ul class="timeline-points">
+              <li>Balanced reports and cash, handled late check-ins and guest issues.</li>
+              <li>Used quiet hours to review labs, notes and CCNP material.</li>
+              <li>Learned to stay calm when everyone else is tired or stressed.</li>
+            </ul>
+          </div>
 
-  <!-- Back to Top -->
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+          <div class="timeline-item">
+            <div class="timeline-role">Senior Marketing Consultant – TELUS (Part-Time)</div>
+            <div class="timeline-meta">Commission sales · home &amp; mobility services · during school terms</div>
+            <ul class="timeline-points">
+              <li>Sold internet, TV, smart home and mobility solutions door-to-door.</li>
+              <li>Coached new reps on pitch structure, mindset and daily planning.</li>
+              <li>Developed a thick skin and a strong respect for every “no”.</li>
+            </ul>
+          </div>
 
-  <!-- Vendor JS CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9.0.0/swiper-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/purecounter.js/1.9.0/purecounter_vanilla.min.js"></script>
+          <div class="timeline-item">
+            <div class="timeline-role">MSc Internetworking – University of Alberta (In Progress)</div>
+            <div class="timeline-meta">Data communications · security · protocols</div>
+            <ul class="timeline-points">
+              <li>Focusing on routing, protocol behaviour and network design.</li>
+              <li>Combining academic work with practical, documented lab setups.</li>
+            </ul>
+          </div>
 
-  <!-- Template Main JS -->
-  <script src="assets/js/main.js"></script>
+          <div class="timeline-item">
+            <div class="timeline-role">B.Tech Computer Science &amp; Engineering</div>
+            <div class="timeline-meta">India</div>
+            <ul class="timeline-points">
+              <li>Built foundations in programming, networks and operating systems.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Initialize Components -->
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-layer">
+      <div class="section-inner reveal">
+        <div class="section-header">
+          <span>R1# ping yuvaraajan.in repeat 5</span>
+          <span class="meta">success rate 5/5, round-trip min/avg/max</span>
+        </div>
+        <div class="contact-shell">
+          <div class="contact-grid">
+            <div class="contact-card">
+              <div class="contact-icon">✉️</div>
+              <div class="contact-label">EMAIL</div>
+              <!-- TODO: put your real email -->
+              <a class="contact-link" href="mailto:yuvaraajan07@hotmail.com">
+                yuvaraajan07@hotmail.com
+              </a>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">🐙</div>
+              <div class="contact-label">GITHUB</div>
+              <a class="contact-link" href="https://github.com/Yuvi0704" target="_blank" rel="noreferrer">
+                github.com/Yuvi0704
+              </a>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">💼</div>
+              <div class="contact-label">LINKEDIN</div>
+              <a class="contact-link" href="https://in.linkedin.com/in/yuvaraajan-e" target="_blank" rel="noreferrer">
+                linkedin.com/in/yuvaraajan-e
+              </a>
+            </div>
+          </div>
+          <div class="contact-echo">
+            R1# echo "Let’s build something clear, practical and a little bit ambitious."
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-with-photo">
+    <div class="footer-text">© 2025 YUVARAAJAN ELLEAPPANE</div>
+    <img src="photo.jpg" alt="Yuvaraajan Elleappane" class="footer-photo">
+  </footer>
+  
+
   <script>
-    // Initialize AOS
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
+    // Smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href");
+        if (!targetId || targetId === "#") return;
+        const el = document.querySelector(targetId);
+        if (!el) return;
+        e.preventDefault();
+        window.scrollTo({
+          top: el.offsetTop - 80,
+          behavior: "smooth",
+        });
+      });
     });
 
-    // Initialize GLightbox
-    const lightbox = GLightbox({
-      selector: '.glightbox'
-    });
-
-    // Initialize PureCounter
-    new PureCounter();
+    // Scroll reveal
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18 }
+    );
+    revealEls.forEach((el) => observer.observe(el));
   </script>
-
 </body>
 </html>
