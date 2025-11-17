@@ -1,920 +1,1386 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Yuvaraajan.in – Networks · Systems · Sales</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Yuvi – Internetworking grad student, CCNP (ENCOR & ENSARI) in progress, building networks, systems and digital solutions with a small enthusiastic team."
-  />
-  <style>
-    :root {
-      --bg: #020617;
-      --panel: #020818;
-      --panel-soft: #020b1f;
-      --accent-main: #22c55e;  /* lime */
-      --accent-alt: #38bdf8;   /* cyan */
-      --accent-soft: rgba(34, 197, 94, 0.45);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1e293b;
-      --font-mono: "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas,
-        "Courier New", monospace;
-      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      --max-inner: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--text);
-      font-family: var(--font-mono);
-      background:
-        radial-gradient(circle at top, #0b1120 0, #020617 55%),
-        radial-gradient(circle at bottom, #022c22 0, #020617 60%);
-      position: relative;
-      overflow-x: hidden;
-      font-size: 16px;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 1px 1px, rgba(148,163,184,0.12) 1px, transparent 0);
-      background-size: 32px 32px;
-      opacity: 0.15;
-      pointer-events: none;
-      z-index: -2;
-    }
-
-    a {
-      color: var(--accent-alt);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* ===== HEADER ===== */
-
-    header {
-      position: relative;
-      z-index: 10;
-    }
-
-    .header-bar {
-      width: 100%;
-      border-bottom: 1px solid #020617;
-      background:
-        linear-gradient(135deg, rgba(15,118,110,0.3), rgba(8,47,73,0.9)),
-        #020617;
-      padding: 26px 4vw 20px;
-      box-shadow:
-        0 0 40px rgba(15,23,42,0.95);
-    }
-
-    .header-inner {
-      max-width: var(--max-inner);
-      margin: 0 auto;
-      border-radius: 24px;
-      padding: 18px 22px 18px;
-      border: 3px solid var(--accent-soft);
-      background:
-        radial-gradient(circle at top left, rgba(34,197,94,0.16), transparent 60%),
-        radial-gradient(circle at bottom right, rgba(56,189,248,0.14), transparent 55%),
-        #020617;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      box-shadow:
-        0 0 0 1px rgba(15,23,42,0.9),
-        0 0 40px rgba(15,23,42,0.9);
-    }
-
-    .header-top {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .brand-name {
-      font-size: 2rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-    }
-
-    .brand-tagline {
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 0.9rem;
-    }
-
-    .nav-link {
-      padding: 7px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.7);
-      background: rgba(2,6,23,0.96);
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.16s ease-out;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      white-space: nowrap;
-    }
-
-    .nav-link:hover {
-      border-color: var(--accent-main);
-      color: #e5fbe9;
-      background: radial-gradient(circle at top, rgba(34,197,94,0.35), #020617);
-      box-shadow:
-        0 0 0 1px rgba(56,189,248,0.6),
-        0 0 26px rgba(34,197,94,0.9);
-    }
-
-    .header-meta {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .header-meta span {
-      white-space: nowrap;
-    }
-
-    .header-meta span:nth-child(1) {
-      color: #bbf7d0;
-    }
-
-    .header-meta span:nth-child(2) {
-      color: #7dd3fc;
-    }
-    footer.footer-with-photo {
-  width: 100%;
-  background: #020617;
-  border-top: 1px solid #020617;
-  padding: 16px 4vw 16px;
-  font-size: 0.9rem;
-  color: #cbd5e1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.footer-text {
-  font-family: var(--font-mono);
-  letter-spacing: 0.15em;
-  font-size: 1rem;
-  color: #cbd5e1;
-  text-align: center;
-}
-
-.footer-photo {
-  position: absolute;
-  right: 4vw;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 2px solid #38bdf8;
-  object-fit: cover;
-  box-shadow: 0 0 12px rgba(56,189,248,0.45);
-  max-width: none;      /* stop it from becoming full width */
-}
-
-.footer-photo:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 18px rgba(34,197,94,0.6);
-}
-
-
-    /* ===== SECTIONS ===== */
-
-    section {
-      width: 100%;
-      position: relative;
-    }
-
-    .section-layer {
-      width: 100%;
-      background:
-        radial-gradient(circle at top left, rgba(34,197,94,0.10), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(56,189,248,0.10), transparent 55%),
-        var(--panel);
-      border-top: 1px solid #020617;
-      border-bottom: 1px solid #020617;
-      padding: 52px 4vw 56px;
-    }
-
-    .section-inner {
-      max-width: var(--max-inner);
-      margin: 0 auto;
-      border-radius: 18px;
-      background:
-        radial-gradient(circle at top left, rgba(34,197,94,0.09), transparent 60%),
-        var(--panel-soft);
-      border: 1px solid var(--border);
-      padding: 32px 32px 34px; /* more breathing room */
-      box-shadow: 0 18px 45px rgba(15,23,42,0.8);
-    }
-
-    .section-header {
-      font-size: 0.9rem;
-      text-transform: none;
-      letter-spacing: 0.08em;
-      color: var(--accent-alt);
-      margin-bottom: 18px;
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .section-header span.meta {
-      color: var(--muted);
-      letter-spacing: normal;
-      text-transform: none;
-      font-size: 0.78rem;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px) scale(0.98);
-      transition:
-        opacity 0.55s ease-out,
-        transform 0.55s ease-out;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    /* ===== HERO ===== */
-
-    .hero-inner {
-      min-height: 62vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .hero-title {
-      font-family: var(--font-sans);
-      font-size: clamp(2.3rem, 3vw + 1rem, 2.9rem);
-      font-weight: 650;
-      margin: 0;
-    }
-
-    .hero-body {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 50rem;
-      line-height: 1.8;
-    }
-
-    .hero-body strong {
-      color: #e5fbe9;
-      font-weight: 500;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 6px;
-      font-size: 0.82rem;
-    }
-
-    .hero-tag {
-      padding: 6px 13px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.75);
-      background: rgba(2,6,23,0.95);
-      color: var(--muted);
-    }
-
-    .hero-actions {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 0.86rem;
-    }
-
-    .btn-primary,
-    .btn-ghost {
-      padding: 9px 22px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      font-family: var(--font-mono);
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-main), var(--accent-alt));
-      color: #020617;
-      font-weight: 700;
-      box-shadow:
-        0 0 0 1px rgba(56,189,248,0.5),
-        0 0 26px rgba(34,197,94,0.8);
-    }
-
-    .btn-primary:hover {
-      filter: brightness(1.07);
-      box-shadow:
-        0 0 0 1px rgba(56,189,248,0.9),
-        0 0 30px rgba(34,197,94,1);
-    }
-
-    .btn-ghost {
-      border-color: rgba(148,163,184,0.8);
-      color: var(--text);
-      background: rgba(4,7,22,0.96);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent-alt);
-      color: var(--accent-alt);
-    }
-
-    /* ===== SKILLS + PROJECTS (looser) ===== */
-
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
-      gap: 32px;                 /* more space between columns */
-      align-items: flex-start;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;                 /* more gap between cards */
-      font-size: 0.9rem;
-    }
-
-    .skill-block {
-      background: #020617;
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,0.5);
-      padding: 16px 18px 18px;   /* more padding */
-    }
-
-    .skill-title {
-      font-size: 1rem;           /* bigger heading */
-      color: #e5e7eb;
-      margin-bottom: 8px;
-    }
-
-    .skill-items {
-      list-style: none;
-      padding-left: 20px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;        /* bigger text */
-      line-height: 1.7;          /* more line spacing */
-    }
-
-    .skill-items li {
-      margin-bottom: 5px;
-    }
-
-    .projects-list {
-      display: grid;
-      grid-template-columns: minmax(0,1fr);
-      gap: 20px;                 /* more space between projects */
-      font-size: 0.9rem;
-    }
-
-    .project-card {
-      background:
-        radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 60%),
-        #020617;
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,0.65);
-      padding: 16px 18px 18px;   /* more padding */
-    }
-
-    .project-name {
-      font-size: 1rem;           /* bigger title */
-      margin-bottom: 8px;
-      color: #e5e7eb;
-    }
-
-    .project-desc {
-      font-size: 0.95rem;        /* bigger text */
-      color: var(--muted);
-      margin-bottom: 8px;
-      line-height: 1.7;          /* more line spacing */
-    }
-
-    .project-meta {
-      font-size: 0.86rem;
-      color: var(--accent-alt);
-    }
-
-    /* ===== EXPERIENCE ===== */
-
-    .timeline {
-      display: grid;
-      grid-template-columns: minmax(0,1fr);
-      gap: 14px;
-    }
-
-    .timeline-item {
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,0.7);
-      background: #020617;
-      padding: 11px 13px 13px;
-      font-size: 0.9rem;
-    }
-
-    .timeline-role {
-      font-size: 0.95rem;
-      color: #e5e7eb;
-    }
-
-    .timeline-meta {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 5px;
-    }
-
-    .timeline-points {
-      margin: 0;
-      padding-left: 20px;
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.6;
-    }
-
-    .timeline-points li {
-      margin-bottom: 4px;
-    }
-
-    /* ===== CONTACT ===== */
-
-    .contact-shell {
-      border-radius: 20px;
-      padding: 18px 18px 20px;
-      border: 1px solid rgba(34,197,94,0.7);
-      background:
-        linear-gradient(135deg, rgba(34,197,94,0.16), rgba(56,189,248,0.14)),
-        #020617;
-      box-shadow:
-        0 0 0 1px rgba(15,23,42,0.9),
-        0 0 36px rgba(15,23,42,0.98);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-      gap: 16px;
-      margin-top: 10px;
-    }
-
-    .contact-card {
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,0.9);
-      background: rgba(2,6,23,0.96);
-      padding: 12px 15px 14px;
-      text-align: center;
-      transition:
-        box-shadow 0.22s ease-out,
-        transform 0.22s ease-out,
-        border-color 0.22s ease-out;
-    }
-
-    .contact-icon {
-      font-size: 1.6rem;
-      margin-bottom: 5px;
-    }
-
-    .contact-label {
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 7px;
-    }
-
-    .contact-link {
-      display: inline-block;
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.85);
-      background: #020617;
-      font-size: 0.88rem;
-      color: #e5e7eb;
-      white-space: nowrap;
-      box-shadow: 0 0 0 0 rgba(34,197,94,0.5);
-      transition:
-        box-shadow 0.22s ease-out,
-        transform 0.22s ease-out,
-        border-color 0.22s ease-out,
-        background 0.22s ease-out;
-    }
-
-    .contact-card:hover {
-      border-color: var(--accent-main);
-      transform: translateY(-4px);
-      box-shadow:
-        0 0 0 1px rgba(56,189,248,0.7),
-        0 0 28px rgba(34,197,94,0.9);
-    }
-
-    .contact-card:hover .contact-link {
-      border-color: var(--accent-alt);
-      background: radial-gradient(circle at top, rgba(56,189,248,0.32), #020617);
-      box-shadow:
-        0 0 0 1px rgba(56,189,248,0.6),
-        0 0 22px rgba(34,197,94,0.9);
-    }
-
-    .contact-echo {
-      margin-top: 16px;
-      font-size: 0.9rem;
-      text-align: center;
-      color: #bbf7d0;
-    }
-
-    /* ===== FOOTER ===== */
-
-   
-    /* ===== RESPONSIVE ===== */
-
-    @media (max-width: 900px) {
-      .header-inner {
+  <head>
+    <meta charset="UTF-8" />
+    <title>Yuvi's Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Yuvaraajan (Yuvi) – Internetworking grad student in Edmonton, CCNP ENCOR & ENSARI in progress. Networking, security, systems, sales and web/AI with a small crew."
+    />
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-PMZ4638R");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GFVR4YZ7C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-8GFVR4YZ7C");
+    </script>
+
+    <style>
+      :root {
+        --bg: #020617;
+        --bg-alt: #000000;
+        --panel: #020617;
+        --border: #16a34a;
+        --border-soft: rgba(34, 197, 94, 0.5);
+        --text-main: #e5e7eb;
+        --text-soft: #9ca3af;
+        --accent: #22c55e;
+        --accent-soft: #4ade80;
+        --accent-blue: #38bdf8;
+        --mono: "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, monospace;
+        --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --max-width: 1040px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        font-family: var(--mono);
+        background: radial-gradient(circle at top, #020617 0, #000000 65%);
+        color: var(--text-main);
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* static grid layer */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(
+          circle at 1px 1px,
+          rgba(34, 197, 94, 0.18) 1px,
+          transparent 0
+        );
+        background-size: 26px 26px;
+        opacity: 0.16;
+        pointer-events: none;
+        z-index: -3;
+      }
+
+      /* BIG MOVING NEON BACKGROUND */
+      .bg-anim {
+        position: fixed;
+        inset: -30%;
+        z-index: -2;
+        pointer-events: none;
+        background: radial-gradient(
+            circle at 10% 10%,
+            rgba(56, 189, 248, 0.6),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(34, 197, 94, 0.65),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at 20% 80%,
+            rgba(139, 92, 246, 0.6),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at 90% 85%,
+            rgba(249, 115, 22, 0.45),
+            transparent 55%
+          );
+        filter: blur(70px);
+        opacity: 0.75;
+        animation: bgDrift 35s ease-in-out infinite alternate;
+      }
+
+      @keyframes bgDrift {
+        0% {
+          transform: translate3d(-8%, -4%, 0) scale(1);
+        }
+        50% {
+          transform: translate3d(12%, 6%, 0) scale(1.05);
+        }
+        100% {
+          transform: translate3d(-4%, 10%, 0) scale(1.02);
+        }
+      }
+
+      a {
+        color: var(--accent-blue);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* ======== HEADER ======== */
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: radial-gradient(circle at top left, #022c22, #020617 60%);
+        border-bottom: 1px solid rgba(22, 163, 74, 0.85);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9),
+          0 0 30px rgba(34, 197, 94, 0.35);
+        backdrop-filter: blur(10px);
+      }
+
+      .cli-header {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 12px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .cli-line {
+        font-size: 1.05rem;
+        font-weight: 600;
+        text-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+      }
+
+      .prompt {
+        color: var(--accent-soft);
+      }
+
+      .command {
+        color: var(--accent);
+      }
+
+      .cli-meta {
+        font-size: 0.9rem;
+        color: var(--text-soft);
+      }
+
+      .cli-menu {
+        margin-top: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 0.85rem;
+      }
+
+      .cli-menu a {
+        color: #bbf7d0;
+        border-radius: 999px;
+        padding: 3px 12px;
+        border: 1px solid rgba(34, 197, 94, 0.65);
+        background: rgba(2, 6, 23, 0.92);
+        text-transform: lowercase;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+        transition: all 0.15s ease-out;
+        box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9);
+      }
+
+      .cli-menu a:hover {
+        background: rgba(22, 163, 74, 0.32);
+        box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.9),
+          0 0 16px rgba(22, 163, 74, 0.95);
+        color: #ecfdf5;
+        transform: translateY(-1px);
+      }
+
+      /* ======== LAYOUT ======== */
+
+      main {
+        max-width: var(--max-width);
+        margin: 24px auto 40px;
+        padding: 0 18px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .terminal-window {
+        border-radius: 14px;
+        background: radial-gradient(circle at top, #020617, #020617 60%, #000 100%);
+        border: 1px solid rgba(22, 163, 74, 0.8);
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8),
+          0 22px 40px rgba(0, 0, 0, 0.9);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .terminal-header {
+        height: 30px;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        border-bottom: 1px solid rgba(22, 163, 74, 0.5);
+        background: linear-gradient(90deg, #020617, #022c22);
+        font-size: 0.75rem;
+        color: var(--text-soft);
+        justify-content: space-between;
+      }
+
+      .traffic-lights {
+        display: flex;
+        gap: 6px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid rgba(15, 23, 42, 0.9);
+      }
+      .dot.red {
+        background: #ef4444;
+      }
+      .dot.yellow {
+        background: #eab308;
+      }
+      .dot.green {
+        background: #22c55e;
+      }
+
+      .terminal-title {
+        font-size: 0.75rem;
+        color: var(--accent-soft);
+      }
+
+      .terminal-body {
         padding: 16px 16px 18px;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: #bbf7d0;
       }
-      .hero-inner {
-        min-height: 0;
-      }
-      .two-col {
-        grid-template-columns: minmax(0,1fr);
-      }
-    }
 
-    @media (max-width: 768px) {
-      .section-inner {
-        padding: 24px 18px 26px;
+      .muted {
+        color: var(--text-soft);
       }
-      nav {
-        width: 100%;
-        overflow-x: auto;
+
+      .strong {
+        color: var(--text-main);
       }
-      .nav-link {
+
+      .section-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: #6ee7b7;
+        margin-bottom: 6px;
+      }
+
+      .spacer {
+        height: 6px;
+      }
+
+      .grid-two {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 18px;
+        margin-top: 10px;
+      }
+
+      .block {
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(34, 197, 94, 0.4);
+        background: rgba(2, 6, 23, 0.85);
+        font-size: 0.86rem;
+        color: #e5e7eb;
+      }
+
+      .block-title {
+        color: var(--accent-soft);
+        margin-bottom: 6px;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      ul li::before {
+        content: "- ";
+        color: var(--accent-soft);
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 4px;
+      }
+
+      .pill {
+        border-radius: 999px;
+        padding: 2px 8px;
+        border: 1px solid rgba(34, 197, 94, 0.5);
+        font-size: 0.78rem;
+        color: var(--text-soft);
+      }
+
+      .soft-line {
+        opacity: 0.6;
+      }
+
+      /* EXPERIENCE / LOGS */
+
+      .log-entry {
+        margin-bottom: 10px;
+      }
+
+      .log-tag {
+        color: #facc15;
+      }
+
+      .log-meta {
+        color: var(--text-soft);
+        font-size: 0.78rem;
+        margin-left: 2ch;
+      }
+
+      .log-list {
+        margin-left: 4ch;
+        font-size: 0.85rem;
+        color: var(--text-soft);
+      }
+
+      /* CONTACT */
+
+      .contact-row {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 10px;
+      }
+
+      .contact-item {
+        padding: 8px 10px;
+        border-radius: 10px;
+        border: 1px solid rgba(34, 197, 94, 0.4);
+        background: rgba(2, 6, 23, 0.9);
+        font-size: 0.83rem;
+      }
+
+      .contact-label {
+        color: var(--text-soft);
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        margin-bottom: 3px;
+      }
+
+      .contact-link {
+        color: #7dd3fc;
+        word-break: break-all;
+      }
+
+      /* FOOTER */
+
+      footer.footer-with-photo {
+        border-top: 1px solid rgba(22, 163, 74, 0.7);
+        background: #020617;
+        padding: 14px 18px 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        font-size: 0.8rem;
+        color: var(--text-soft);
+      }
+
+      .footer-text {
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
         font-size: 0.78rem;
       }
-      .header-meta span {
-        white-space: normal;
-      }
-    }
 
-    @media (max-width: 520px) {
-      .header-bar {
-        padding-inline: 3vw;
+      .footer-photo {
+        position: absolute;
+        right: 22px;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        border: 2px solid #38bdf8;
+        object-fit: cover;
+        box-shadow: 0 0 16px rgba(56, 189, 248, 0.55);
       }
-      .brand-name {
-        font-size: 1.5rem;
+
+      /* ======== SPLASH ======== */
+
+      .splash {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at top, #0b1120 0, #020617 60%, #000 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 40;
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
       }
-      .hero-title {
-        font-size: 2rem;
+
+      .splash.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(1.02);
       }
-      .hero-body {
+
+      .splash-inner {
+        text-align: center;
+        padding: 32px 24px;
+        border-radius: 18px;
+        border: 1px solid rgba(34, 197, 94, 0.8);
+        background: rgba(2, 6, 23, 0.96);
+        box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9),
+          0 24px 50px rgba(0, 0, 0, 0.95);
+        max-width: 360px;
+      }
+
+      .splash-emoji {
+        font-size: 3.2rem;
+        margin-bottom: 10px;
+      }
+
+      .splash-title {
+        font-size: 1.6rem;
+        margin-bottom: 6px;
+        color: #e5e7eb;
+      }
+
+      .splash-subtitle {
         font-size: 0.95rem;
+        color: var(--text-soft);
+        margin-bottom: 18px;
       }
-      .contact-link {
-        white-space: normal;
+
+      .splash-btn {
+        margin-top: 4px;
+        padding: 8px 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(34, 197, 94, 0.9);
+        background: linear-gradient(135deg, var(--accent), var(--accent-blue));
+        color: #020617;
+        font-family: var(--mono);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        cursor: pointer;
+        box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.8),
+          0 0 24px rgba(34, 197, 94, 0.95);
       }
-    }
-  </style>
-</head>
-<body>
-  <!-- HEADER -->
-  <header>
-    <div class="header-bar">
-      <div class="header-inner">
-        <div class="header-top">
-          <div class="brand">
-            <div class="brand-name">YUVARAAJAN</div>
-            <div class="brand-tagline">
-              CORE &amp; EDGE NETWORKS · CCNP (ENCOR &amp; ENSARI) · WEB &amp; AI SOLUTIONS
-            </div>
+
+      .splash-btn:hover {
+        filter: brightness(1.05);
+      }
+
+      .splash-hint {
+        margin-top: 10px;
+        font-size: 0.8rem;
+        color: var(--text-soft);
+      }
+
+      /* ======== HERO ======== */
+
+      .hero {
+        min-height: calc(100vh - 80px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-inner {
+        border-radius: 18px;
+        border: 1px solid rgba(34, 197, 94, 0.7);
+        background: radial-gradient(
+          circle at top,
+          rgba(15, 23, 42, 0.96),
+          rgba(2, 6, 23, 0.95)
+        );
+        padding: 30px 26px;
+        box-shadow: 0 0 0 1px rgba(15, 23, 42, 1),
+          0 26px 60px rgba(0, 0, 0, 0.95),
+          0 0 50px rgba(56, 189, 248, 0.4);
+        max-width: 880px;
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-inner::before {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background: radial-gradient(
+            circle at 0% 0%,
+            rgba(56, 189, 248, 0.6),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at 80% 100%,
+            rgba(129, 140, 248, 0.5),
+            transparent 55%
+          );
+        opacity: 0.35;
+        mix-blend-mode: screen;
+        filter: blur(50px);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .hero-kicker {
+        font-size: 0.78rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #a5f3fc;
+        margin-bottom: 10px;
+      }
+
+      .hero-title {
+        font-size: 2.35rem;
+        line-height: 1.2;
+        margin-bottom: 10px;
+      }
+
+      .hero-title span {
+        color: var(--accent-soft);
+      }
+
+      .hero-sub {
+        font-size: 0.96rem;
+        color: var(--text-soft);
+        max-width: 540px;
+        margin-bottom: 16px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hero-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 7px 18px;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        border: 1px solid rgba(34, 197, 94, 0.85);
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .hero-btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-blue));
+        color: #020617;
+        box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.9),
+          0 0 24px rgba(34, 197, 94, 0.9);
+      }
+
+      .hero-btn.ghost {
+        background: rgba(2, 6, 23, 0.8);
+        color: #bbf7d0;
+      }
+
+      .hero-btn:hover {
+        filter: brightness(1.05);
+      }
+
+      .hero-hint {
+        font-size: 0.8rem;
+        color: var(--text-soft);
+        margin-top: 6px;
+      }
+
+      /* ======== SCROLL REVEAL ======== */
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        will-change: opacity, transform;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ======== RESPONSIVE ======== */
+
+      @media (max-width: 768px) {
+        .cli-header {
+          padding-inline: 12px;
+        }
+        .cli-line {
+          font-size: 0.95rem;
+        }
+        .cli-meta {
+          font-size: 0.82rem;
+        }
+        .grid-two {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .footer-text {
+          text-align: center;
+          max-width: 80%;
+        }
+        .footer-photo {
+          right: 12px;
+          width: 46px;
+          height: 46px;
+        }
+        .hero-inner {
+          padding: 24px 18px;
+        }
+        .hero-title {
+          font-size: 1.9rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        main {
+          padding-inline: 12px;
+        }
+        .terminal-body {
+          font-size: 0.84rem;
+        }
+        .splash-inner {
+          margin-inline: 16px;
+        }
+        .hero-title {
+          font-size: 1.7rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bg-anim"></div>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PMZ4638R"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- SPLASH -->
+    <div id="splash" class="splash">
+      <div class="splash-inner">
+        <div class="splash-emoji">👋</div>
+        <div class="splash-title">Hey, I’m Yuvi.</div>
+        <div class="splash-subtitle">
+          Welcome to my network console.<br />
+          Click below (or press Enter) to connect.
+        </div>
+        <button id="enter-console" class="splash-btn">Enter console</button>
+        <div class="splash-hint">R1(yuvaraajan.in)# press Enter</div>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+      <div class="cli-header">
+        <div class="cli-line">
+          <span class="prompt">R1(yuvaraajan.in)#</span>
+          <span class="command"> show ui header</span>
+        </div>
+        <div class="cli-meta">
+          device: Yuvaraajan · location: Edmonton, AB · role: Internetworking ·
+          CCNP ENCOR &amp; ENSARI (ongoing)
+        </div>
+        <div class="cli-menu">
+          <a href="#hero">top</a>
+          <a href="#about">whoami</a>
+          <a href="#skills">show skills</a>
+          <a href="#projects">dir projects</a>
+          <a href="#publications">show pubs</a>
+          <a href="#experience">show logging</a>
+          <a href="#contact">ping yuvi</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="hero" class="hero reveal">
+        <div class="hero-inner">
+          <div class="hero-kicker">R1(yuvaraajan.in) // welcome</div>
+          <h1 class="hero-title">
+            Network console of <span>Yuvaraajan “Yuvi”</span>
+          </h1>
+          <p class="hero-sub">
+            Internetworking grad student @ University of Alberta · CCNP ENCOR
+            &amp; ENSARI in progress. Networking, security, systems and
+            real-world sales experience – building labs, projects and clear
+            documentation that teams can actually use.
+          </p>
+          <div class="hero-actions">
+            <a href="#about" class="hero-btn primary">enter running-config</a>
+            <a href="#projects" class="hero-btn ghost">view project log</a>
           </div>
-          <nav>
-            <a class="nav-link" href="#about">[ABOUT]</a>
-            <a class="nav-link" href="#skills">[SKILLS]</a>
-            <a class="nav-link" href="#projects">[PROJECTS]</a>
-            <a class="nav-link" href="#experience">[EXPERIENCE]</a>
-            <a class="nav-link" href="#contact">[CONTACT]</a>
-          </nav>
+          <div class="hero-hint">scroll to enter console ↓</div>
         </div>
-        <div class="header-meta">
-          <span>R1# show users | include yuvi</span>
-          <span>R1# show ip interface brief | include up</span>
-        </div>
-      </div>
-    </div>
-  </header>
+      </section>
 
-  <!-- HERO -->
-  <section id="about">
-    <div class="section-layer">
-      <div class="section-inner reveal hero-inner">
-        <div class="section-header">
-          <span>R1# show running-config | section ABOUT</span>
-          <span class="meta">last updated: 2025-11-16</span>
-        </div>
-        <h1 class="hero-title">
-          Designing networks, documents and conversations that actually make sense.
-        </h1>
-        <p class="hero-body">
-          I’m Yuvi – a Master’s student in Internetworking at the University of Alberta with a background
-          in Computer Science. I’m currently working towards CCNP (ENCOR &amp; ENSARI), and I enjoy taking messy
-          problems, diagramming them, and turning them into simple systems that people can run.
-          <br /><br />
-          I don’t build alone: I collaborate with a small crew of like-minded people who love
-          <strong>web design, SEO, digital marketing and AI-powered solutions</strong>.
-          So whether it’s a network lab, a marketing funnel or an automation idea, there’s usually someone
-          on the team who gets excited to ship it.
-        </p>
-        <div class="hero-tags">
-          <span class="hero-tag">Routing · Switching · VLANs</span>
-          <span class="hero-tag">TCP/IP · Wireshark · Linux</span>
-          <span class="hero-tag">CCNP ENCOR &amp; ENSARI – ongoing</span>
-          <span class="hero-tag">Web, SEO &amp; AI with a small team</span>
-        </div>
-        <div class="hero-actions">
-          <!-- TODO: change href to your real resume link -->
-          <a class="btn-primary" href="#" target="_blank" rel="noreferrer">DOWNLOAD RESUME</a>
-          <a class="btn-ghost" href="#projects">VIEW PROJECT LOG</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS + PROJECTS -->
-  <section>
-    <div class="section-layer">
-      <div class="section-inner">
-        <div class="two-col">
-          <!-- SKILLS -->
-          <div class="reveal" id="skills">
-            <div class="section-header">
-              <span>R1# show platform software skill-set</span>
-              <span class="meta">output filtered for yuvi</span>
+      <!-- ABOUT -->
+      <section id="about" class="reveal">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="traffic-lights">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
             </div>
-            <div class="skills-grid">
-              <div class="skill-block">
-                <div class="skill-title">Routing &amp; Switching</div>
-                <ul class="skill-items">
-                  <li>OSPF, basic EIGRP</li>
-                  <li>VLAN design &amp; inter-VLAN routing</li>
-                  <li>Spanning Tree, port security, ACLs</li>
-                  <li>IPv4/IPv6 addressing &amp; subnetting</li>
+            <div class="terminal-title">R1 (yuvaraajan.in) – vty 0 – connected</div>
+          </div>
+
+          <div class="terminal-body">
+            <div class="section-label">PROFILE</div>
+
+            <div>
+              <span class="prompt">R1#</span>
+              <span class="command"> show running-config | section yuvi</span>
+            </div>
+            <div>
+              name <span class="strong">Yuvaraajan</span> (everyone calls me
+              <span class="strong">Yuvi</span>)
+            </div>
+            <div>
+              role Internetworking @ University of Alberta · CCNP ENCOR &amp;
+              ENSARI – <span class="strong">in progress</span>
+            </div>
+            <div>
+              uptime student · network/security enthusiast · Night Auditor @
+              Holiday Inn · ex-TELUS SMC
+            </div>
+            <div>mode networks · systems · sales · web/AI with a small crew</div>
+
+            <div class="spacer"></div>
+
+            <div>
+              <span class="prompt">R1#</span>
+              <span class="command"> show description</span>
+            </div>
+            <div class="muted">
+              I like taking messy problems – a network diagram, a noisy sales
+              day, a half-broken idea – and turning them into calm, repeatable
+              systems: labs, checklists, playbooks and simple docs that anyone
+              on the team can understand.
+            </div>
+
+            <div class="spacer"></div>
+
+            <div>
+              <span class="prompt">R1#</span>
+              <span class="command"> show interests detail</span>
+            </div>
+            <ul>
+              <li>
+                Networking enthusiast focused on routing, switching and secure
+                design.
+              </li>
+              <li>
+                Built projects in networking and security across labs,
+                topologies and threat-style scenarios.
+              </li>
+              <li>
+                Currently working on a capstone project in enterprise networking
+                plus CCNP ENCOR &amp; ENSARI.
+              </li>
+              <li>
+                Likes helping people by finding practical solutions that
+                actually empower them.
+              </li>
+              <li>
+                Helps small businesses with web, SEO and AI projects with
+                like-minded friends.
+              </li>
+            </ul>
+
+            <div class="spacer"></div>
+
+            <div>
+              <span class="prompt">R1#</span>
+              <span class="command"> show status summary</span>
+            </div>
+            <div>status learning daily</div>
+            <div>status documenting labs and configs</div>
+            <div>status capstone + CCNP ENCOR / ENSARI in progress</div>
+            <div>status open to junior networking roles in Alberta</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="reveal">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="traffic-lights">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+            </div>
+            <div class="terminal-title">R1 – show capabilities</div>
+          </div>
+
+          <div class="terminal-body">
+            <div class="section-label">SKILLS &amp; STACK</div>
+
+            <div>
+              <span class="prompt">R1#</span>
+              <span class="command"> show platform skill-set</span>
+            </div>
+
+            <div class="grid-two">
+              <div class="block">
+                <div class="block-title">Routing &amp; Switching</div>
+                <ul>
+                  <li>CCNP ENCOR &amp; ENSARI – ongoing (foundation from CCNA).</li>
+                  <li>
+                    VLAN design, trunking, inter-VLAN routing on small
+                    topologies.
+                  </li>
+                  <li>Static routes, OSPF basics, ACLs and port security.</li>
+                  <li>IPv4/IPv6 addressing, subnetting and summarisation.</li>
                 </ul>
               </div>
-              <div class="skill-block">
-                <div class="skill-title">Tools &amp; Platforms</div>
-                <ul class="skill-items">
-                  <li>Cisco Packet Tracer, GNS3 / containerlab (learning)</li>
-                  <li>Wireshark &amp; packet analysis</li>
-                  <li>Linux CLI &amp; Bash</li>
-                  <li>Git &amp; GitHub</li>
-                </ul>
-              </div>
-              <div class="skill-block">
-                <div class="skill-title">Code &amp; Security</div>
-                <ul class="skill-items">
-                  <li>Python for scripts &amp; automation ideas</li>
-                  <li>C from systems / security coursework</li>
-                  <li>Internet security fundamentals</li>
-                  <li>Keylogger behaviour &amp; mitigations (academic)</li>
-                </ul>
-              </div>
-              <div class="skill-block">
-                <div class="skill-title">Web, SEO &amp; AI (Team)</div>
-                <ul class="skill-items">
-                  <li>Landing pages &amp; portfolio sites</li>
-                  <li>SEO basics &amp; content structure</li>
-                  <li>Digital marketing flows &amp; funnels</li>
-                  <li>AI-assisted automation &amp; workflows</li>
+
+              <div class="block">
+                <div class="block-title">Tools &amp; Platforms</div>
+                <ul>
+                  <li>Cisco Packet Tracer for quick ideas and practice.</li>
+                  <li>Learning containerlab / GNS3 for advanced CCNP labs.</li>
+                  <li>Wireshark for packet inspection and protocol behaviour.</li>
+                  <li>
+                    Linux CLI (Kali, Ubuntu) for pings, traces and security
+                    testing.
+                  </li>
                 </ul>
               </div>
             </div>
-          </div>
 
-          <!-- PROJECTS -->
-          <div class="reveal" id="projects">
-            <div class="section-header">
-              <span>R1# dir flash:/projects</span>
-              <span class="meta">ls yuvi-projects/</span>
+            <div class="grid-two" style="margin-top: 10px">
+              <div class="block">
+                <div class="block-title">Code &amp; Security</div>
+                <ul>
+                  <li>
+                    Python for simple scripts, automation ideas and parsing
+                    outputs.
+                  </li>
+                  <li>C exposure from systems and Internet security.</li>
+                  <li>
+                    Keylogger and exploit-style labs to understand attacker
+                    behaviour.
+                  </li>
+                  <li>Metasploit practice on controlled Windows 10 labs.</li>
+                </ul>
+              </div>
+
+              <div class="block">
+                <div class="block-title">Web, SEO &amp; Cloud</div>
+                <ul>
+                  <li>HTML, CSS, JavaScript, Node.js and small web apps.</li>
+                  <li>SEO basics: structure, copy and on-page tweaks.</li>
+                  <li>AWS Cloud Practitioner / Technical Essentials – base.</li>
+                  <li>AI tools for planning, docs and acceleration.</li>
+                </ul>
+                <div class="pill-row">
+                  <div class="pill">“Live, Let Live!” mindset</div>
+                  <div class="pill">Small, enthusiastic crew</div>
+                </div>
+              </div>
             </div>
-            <div class="projects-list">
-              <article class="project-card">
-                <div class="project-name">ccnp-core-lab/</div>
-                <div class="project-desc">
-                  A five-router lab built for ENCOR study: VLANs, routing, ACLs and
-                  failure scenarios, used as a base for route-attack and mitigation experiments.
-                </div>
-                <div class="project-meta">Cisco · OSPF · VLANs · ACLs · documentation-first</div>
-              </article>
 
-              <article class="project-card">
-                <div class="project-name">mint-702-frames-and-errors/</div>
-                <div class="project-desc">
-                  Data communication labs exploring framing, error detection and MAC behaviour,
-                  with written reports that connect the theory to live packet captures.
-                </div>
-                <div class="project-meta">Wireshark · TCP/IP · CRC · protocol analysis</div>
-              </article>
+            <div class="spacer"></div>
 
-              <article class="project-card">
-                <div class="project-name">internet-security-keylogger-study/</div>
-                <div class="project-desc">
-                  A guided investigation into how keyloggers capture input, where they hide,
-                  and practical steps regular users can take to reduce risk.
-                </div>
-                <div class="project-meta">C / Python · OS concepts · security mindset</div>
-              </article>
+            <div class="section-label">CERTIFICATIONS (HIGHLIGHTS)</div>
+            <ul>
+              <li>CCNA Preparatory – Dynamic Networking Institute.</li>
+              <li>CEH Preparatory – Dynamic Networking Institute.</li>
+              <li>AWS Cloud Practitioner Essentials – AWS.</li>
+              <li>Cybersecurity Basics – IBM.</li>
+              <li>Open Source Networking Technologies – LinuxFoundationX.</li>
+              <li>Blockchain Essentials – LinuxFoundationX.</li>
+            </ul>
 
-              <article class="project-card">
-                <div class="project-name">telus-sales-systems/</div>
-                <div class="project-desc">
-                  Playbooks, scorecards and mini-workshops built to help new reps
-                  ramp faster, stay organised and keep their mindset stable in commission environments.
-                </div>
-                <div class="project-meta">Workshops · coaching · process design</div>
-              </article>
+            <div class="spacer"></div>
+
+            <div class="soft-line">
+              <span class="prompt">R1#</span>
+              <span class="command"> show capabilities brief</span> ·
+              interfaces appear <span class="strong">up/up</span>
             </div>
           </div>
         </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="reveal">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="traffic-lights">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+            </div>
+            <div class="terminal-title">R1 – dir flash:/projects</div>
+          </div>
+
+          <div class="terminal-body">
+            <div class="section-label">PROJECT LOG</div>
+
+            <div>
+              <span class="prompt">R1#</span>
+              <span class="command"> dir flash:/yuvi-projects</span>
+            </div>
+
+            <div class="block" style="margin-top: 10px">
+              <div class="block-title">ccnp-core-lab/</div>
+              <ul>
+                <li>
+                  Five-router ENCOR lab with VLANs, routing, ACLs and failure
+                  tests.
+                </li>
+                <li>Used to explore route attacks and mitigation ideas.</li>
+                <li>
+                  Documentation-first: diagrams, configs and “what happened”
+                  logs.
+                </li>
+              </ul>
+              <div class="muted">tags: cisco · ospf · vlans</div>
+            </div>
+
+            <div class="block" style="margin-top: 10px">
+              <div class="block-title">internet-security-keylogger-study/</div>
+              <ul>
+                <li>
+                  Explored how keyloggers hook into inputs and hide on systems.
+                </li>
+                <li>Focus on persistence, stealth and impact on users.</li>
+              </ul>
+              <div class="muted">tags: security · c · os</div>
+            </div>
+
+            <div class="block" style="margin-top: 10px">
+              <div class="block-title">enhancing-digital-content-security/</div>
+              <ul>
+                <li>
+                  Combined Triple DES encryption with Visual Cryptography to
+                  protect content.
+                </li>
+                <li>Flows built for secure but simple sharing.</li>
+              </ul>
+              <div class="muted">tags: cryptography · visual crypto</div>
+            </div>
+
+            <div class="block" style="margin-top: 10px">
+              <div class="block-title">win10-hacking-metasploit/</div>
+              <ul>
+                <li>Payloads hidden inside image files to test exploitation.</li>
+                <li>
+                  Analyzed execution flow, privileges and defender perspective.
+                </li>
+              </ul>
+              <div class="muted">tags: metasploit · exploit labs</div>
+            </div>
+
+            <div class="block" style="margin-top: 10px">
+              <div class="block-title">traffic-disobeying-control-system/</div>
+              <ul>
+                <li>Arduino + GSM + RFID to detect traffic rule violations.</li>
+              </ul>
+              <div class="muted">tags: arduino · iot</div>
+            </div>
+
+            <div class="block" style="margin-top: 10px">
+              <div class="block-title">anomaly-behaviour-monitoring/</div>
+              <ul>
+                <li>
+                  AI system to classify behaviour as Depressed / Angry /
+                  Intoxicated.
+                </li>
+              </ul>
+              <div class="muted">tags: ai · behaviour</div>
+            </div>
+
+            <div class="block" style="margin-top: 10px">
+              <div class="block-title">rag-medical-assistant/</div>
+              <ul>
+                <li>
+                  RAG-based medical assistant focused on infectious diseases.
+                </li>
+                <li>Published on IEEE Xplore.</li>
+              </ul>
+              <div class="muted">tags: rag · ai · ieee</div>
+            </div>
+
+            <div class="block" style="margin-top: 10px">
+              <div class="block-title">know-your-bus/</div>
+              <ul>
+                <li>Smart bus information system with real-time awareness.</li>
+                <li>Published on IEEE Xplore.</li>
+              </ul>
+              <div class="muted">tags: iot · transport · ieee</div>
+            </div>
+
+            <div class="block" style="margin-top: 10px">
+              <div class="block-title">telus-sales-systems/</div>
+              <ul>
+                <li>
+                  Playbooks and tracking sheets to help new reps ramp faster.
+                </li>
+                <li>
+                  Used in workshops for strategy, motivation and performance.
+                </li>
+              </ul>
+              <div class="muted">tags: sales · coaching · systems</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PUBLICATIONS -->
+      <section id="publications" class="reveal">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="traffic-lights">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+            </div>
+            <div class="terminal-title">R1 – show publications</div>
+          </div>
+
+          <div class="terminal-body">
+            <div class="section-label">PUBLICATIONS</div>
+
+            <ul>
+              <li>
+                A RAG-based Medical Assistant Especially for Infectious Diseases
+                – IEEE Xplore
+                <div class="muted">
+                  ref: 10544639 ·
+                  <a
+                    href="https://ieeexplore.ieee.org/document/10544639"
+                    target="_blank"
+                    rel="noreferrer"
+                    >ieeexplore.ieee.org/document/10544639</a
+                  >
+                </div>
+              </li>
+
+              <li style="margin-top: 6px">
+                Know Your Bus – IEEE Xplore
+                <div class="muted">
+                  ref: 10925667 ·
+                  <a
+                    href="https://ieeexplore.ieee.org/document/10925667"
+                    target="_blank"
+                    rel="noreferrer"
+                    >ieeexplore.ieee.org/document/10925667</a
+                  >
+                </div>
+              </li>
+
+              <li style="margin-top: 6px">
+                Student Behaviour Monitoring – conference work
+              </li>
+              <li>Ambulance Intimation using LoRa – conference work</li>
+              <li>Traffic Disobeying Control System – conference work</li>
+              <li>
+                Analog Clock-Based Smartphone Authentication – conference work
+              </li>
+              <li>
+                Digital Content Security using Triple DES &amp; Visual
+                Cryptography – conference work
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="reveal">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="traffic-lights">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+            </div>
+            <div class="terminal-title">R1 – show logging | include yuvi</div>
+          </div>
+
+          <div class="terminal-body">
+            <div class="section-label">EXPERIENCE LOG</div>
+
+            <div class="log-entry">
+              <span class="log-tag">%NIGHT-AUDITOR-INFO:</span>
+              <span class="strong">
+                Night Auditor – Holiday Inn (Part-Time; Current)</span
+              >
+              <div class="log-meta">
+                location: Edmonton · mode: nights &amp; numbers
+              </div>
+              <ul class="log-list">
+                <li>
+                  Balances end-of-day reports, audits folios and closes revenue.
+                </li>
+                <li>
+                  Handles late check-ins, guest issues and escalations calmly.
+                </li>
+                <li>
+                  Keeps the property stable at night and prepares for morning
+                  teams.
+                </li>
+                <li>Uses quiet hours to review labs and CCNP material.</li>
+              </ul>
+            </div>
+
+            <div class="log-entry">
+              <span class="log-tag">%TELUS-SMC-INFO:</span>
+              <span class="strong">
+                Senior Marketing Consultant – TELUS (Former)</span
+              >
+              <div class="log-meta">
+                mode: commission · services: internet, TV, smart home, mobility
+              </div>
+              <ul class="log-list">
+                <li>
+                  Led workshops on sales strategy, motivation and performance.
+                </li>
+                <li>Conducted interviews and helped hire qualified reps.</li>
+                <li>
+                  Earned 200+ customer recognition feedbacks for clear service.
+                </li>
+                <li>
+                  Worked across D2D, mall events, community activations and
+                  building events.
+                </li>
+                <li>
+                  Completed multiple sales road trips to small cities in
+                  Alberta.
+                </li>
+              </ul>
+            </div>
+
+            <div class="log-entry">
+              <span class="log-tag">%INT-NETWORK-INFO:</span>
+              <span class="strong">
+                Cisco Virtual Internship – Networking</span
+              >
+              <ul class="log-list">
+                <li>
+                  Designed topologies and connectivity in Cisco Packet Tracer.
+                </li>
+                <li>Reinforced understanding of packet movement.</li>
+              </ul>
+            </div>
+
+            <div class="log-entry">
+              <span class="log-tag">%IT-SUPPORT-INFO:</span>
+              <span class="strong">
+                IT Support Internship – Integra Software Services</span
+              >
+              <ul class="log-list">
+                <li>Helped staff with system and network issues.</li>
+                <li>Learned structured troubleshooting workflows.</li>
+              </ul>
+            </div>
+
+            <div class="log-entry">
+              <span class="log-tag">%INT-WEB-INFO:</span>
+              <span class="strong">
+                Web Tech &amp; Development Intern – Legends Tech Solution</span
+              >
+              <ul class="log-list">
+                <li>Contributed to both front-end and back-end tasks.</li>
+                <li>Strengthened practical problem-solving skills.</li>
+              </ul>
+            </div>
+
+            <div class="log-entry">
+              <span class="log-tag">%INT-CYBER-INFO:</span>
+              <span class="strong">
+                Cyber Security Internships – IBM &amp; Exposys Data Labs</span
+              >
+              <ul class="log-list">
+                <li>Built foundations in cyber security concepts.</li>
+                <li>
+                  Completed a keylogger project to understand real-world
+                  exploits.
+                </li>
+                <li>Explored system hardening and detection ideas.</li>
+              </ul>
+            </div>
+
+            <div class="log-entry">
+              <span class="log-tag">%STUDY-MINT-INFO:</span>
+              <span class="strong">
+                MSc Internetworking – University of Alberta (In progress)</span
+              >
+              <ul class="log-list">
+                <li>Bridging academic theory with reproducible labs.</li>
+                <li>Thinking in packets, timers and state machines.</li>
+              </ul>
+            </div>
+
+            <div class="log-entry">
+              <span class="log-tag">%BTECH-CSE-INFO:</span>
+              <span class="strong">
+                B.Tech Computer Science &amp; Engineering – India</span
+              >
+              <ul class="log-list">
+                <li>Foundation for networking, OS and programming.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="reveal">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="traffic-lights">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+            </div>
+            <div class="terminal-title">R1 – ping yuvi</div>
+          </div>
+
+          <div class="terminal-body">
+            <div class="section-label">CONTACT</div>
+
+            <div>
+              <span class="prompt">R1#</span>
+              <span class="command"> ping yuvaraajan.in repeat 5</span>
+            </div>
+            <div class="muted">
+              Reply from yuvi: bytes=∞ time&lt;1ms · success rate ≈ 100%.
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-item">
+                <div class="contact-label">Email</div>
+                <a
+                  class="contact-link"
+                  href="mailto:yuvaraajan07@hotmail.com"
+                  >yuvaraajan07@hotmail.com</a
+                >
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-label">GitHub</div>
+                <a
+                  class="contact-link"
+                  href="https://github.com/Yuvi0704"
+                  target="_blank"
+                  rel="noreferrer"
+                  >github.com/Yuvi0704</a
+                >
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-label">LinkedIn</div>
+                <a
+                  class="contact-link"
+                  href="https://linkedin.com/in/yuvaraajan-e"
+                  target="_blank"
+                  rel="noreferrer"
+                  >linkedin.com/in/yuvaraajan-e</a
+                >
+              </div>
+            </div>
+
+            <div class="spacer"></div>
+
+            <div class="soft-line">
+              <span class="prompt">R1#</span>
+              <span class="command">
+                echo "Let’s build something clear, practical and a little bit
+                ambitious."</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-with-photo">
+      <div class="footer-text">
+        © 2025 YUVARAAJAN ELLEAPPANE · LIVE, LET LIVE!
       </div>
-    </div>
-  </section>
+      <img src="photo.jpg" alt="Yuvaraajan Elleappane" class="footer-photo" />
+    </footer>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="section-layer">
-      <div class="section-inner reveal">
-        <div class="section-header">
-          <span>R1# show logging | include yuvi</span>
-          <span class="meta">recent events</span>
-        </div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-role">Night Auditor – Hospitality (Part-Time)</div>
-            <div class="timeline-meta">Edmonton, Canada · nights &amp; numbers · alongside studies</div>
-            <ul class="timeline-points">
-              <li>Balanced reports and cash, handled late check-ins and guest issues.</li>
-              <li>Used quiet hours to review labs, notes and CCNP material.</li>
-              <li>Learned to stay calm when everyone else is tired or stressed.</li>
-            </ul>
-          </div>
+    <script>
+      // Splash behaviour
+      const splash = document.getElementById("splash");
+      const enterBtn = document.getElementById("enter-console");
 
-          <div class="timeline-item">
-            <div class="timeline-role">Senior Marketing Consultant – TELUS (Part-Time)</div>
-            <div class="timeline-meta">Commission sales · home &amp; mobility services · during school terms</div>
-            <ul class="timeline-points">
-              <li>Sold internet, TV, smart home and mobility solutions door-to-door.</li>
-              <li>Coached new reps on pitch structure, mindset and daily planning.</li>
-              <li>Developed a thick skin and a strong respect for every “no”.</li>
-            </ul>
-          </div>
+      function hideSplash() {
+        if (!splash.classList.contains("hidden")) {
+          splash.classList.add("hidden");
+        }
+      }
 
-          <div class="timeline-item">
-            <div class="timeline-role">MSc Internetworking – University of Alberta (In Progress)</div>
-            <div class="timeline-meta">Data communications · security · protocols</div>
-            <ul class="timeline-points">
-              <li>Focusing on routing, protocol behaviour and network design.</li>
-              <li>Combining academic work with practical, documented lab setups.</li>
-            </ul>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-role">B.Tech Computer Science &amp; Engineering</div>
-            <div class="timeline-meta">India</div>
-            <ul class="timeline-points">
-              <li>Built foundations in programming, networks and operating systems.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-layer">
-      <div class="section-inner reveal">
-        <div class="section-header">
-          <span>R1# ping yuvaraajan.in repeat 5</span>
-          <span class="meta">success rate 5/5, round-trip min/avg/max</span>
-        </div>
-        <div class="contact-shell">
-          <div class="contact-grid">
-            <div class="contact-card">
-              <div class="contact-icon">✉️</div>
-              <div class="contact-label">EMAIL</div>
-              <!-- TODO: put your real email -->
-              <a class="contact-link" href="mailto:yuvaraajan07@hotmail.com">
-                yuvaraajan07@hotmail.com
-              </a>
-            </div>
-
-            <div class="contact-card">
-              <div class="contact-icon">🐙</div>
-              <div class="contact-label">GITHUB</div>
-              <a class="contact-link" href="https://github.com/Yuvi0704" target="_blank" rel="noreferrer">
-                github.com/Yuvi0704
-              </a>
-            </div>
-
-            <div class="contact-card">
-              <div class="contact-icon">💼</div>
-              <div class="contact-label">LINKEDIN</div>
-              <a class="contact-link" href="https://in.linkedin.com/in/yuvaraajan-e" target="_blank" rel="noreferrer">
-                linkedin.com/in/yuvaraajan-e
-              </a>
-            </div>
-          </div>
-          <div class="contact-echo">
-            R1# echo "Let’s build something clear, practical and a little bit ambitious."
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer-with-photo">
-    <div class="footer-text">© 2025 YUVARAAJAN ELLEAPPANE</div>
-    <img src="photo.jpg" alt="Yuvaraajan Elleappane" class="footer-photo">
-  </footer>
-  
-
-  <script>
-    // Smooth scroll for in-page links
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        const targetId = this.getAttribute("href");
-        if (!targetId || targetId === "#") return;
-        const el = document.querySelector(targetId);
-        if (!el) return;
-        e.preventDefault();
-        window.scrollTo({
-          top: el.offsetTop - 80,
-          behavior: "smooth",
-        });
+      enterBtn.addEventListener("click", hideSplash);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") hideSplash();
       });
-    });
 
-    // Scroll reveal
-    const revealEls = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.18 }
-    );
-    revealEls.forEach((el) => observer.observe(el));
-  </script>
-</body>
+      // Scroll reveal
+      const revealEls = document.querySelectorAll(".reveal");
+
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.22 }
+      );
+
+      revealEls.forEach((el) => observer.observe(el));
+    </script>
+  </body>
 </html>
